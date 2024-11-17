@@ -1,5 +1,6 @@
 import org.openqa.selenium.*;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -8,8 +9,8 @@ import java.time.Duration;
 
 public class OrangeHRM
 {
-    WebDriver driver;
 
+    WebDriver driver;
 
     @BeforeClass
     void preconditions(){
@@ -39,7 +40,7 @@ public class OrangeHRM
         driver.findElement(By.xpath("//span[text()='Buzz']")).click();
 
     }
-    @Test(priority = 3)
+   @Test(priority = 3)
     void VerifyAbleToCheckMaintance() {
         driver.findElement(By.xpath("//span[text()='Maintenance']")).click();
         driver.findElement(By.name("password")).sendKeys("admin123");
@@ -66,6 +67,42 @@ public class OrangeHRM
         driver.findElement(By.xpath("//a[text()='Nationalities']")).click();
         driver.findElement(By.xpath("//a[text()='Corporate Branding']")).click();
         driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+    }
+    @Test(priority = 6)
+    void VerifyAbleToAddAdminUser(){
+       Actions action =new Actions(driver);
+        driver.findElement(By.xpath("//span[text()='Admin']")).click();
+        driver.findElement(By.xpath("//button[text()=' Add ']")).click();
+        WebElement UserRoleDropDown = driver.findElement(By.xpath("(//div[text()='-- Select --'])[1]"));
+        action.click(UserRoleDropDown).pause(1000).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
+        WebElement HintTextField = driver.findElement(By.xpath("//input[@placeholder='Type for hints...']"));
+        action.sendKeys(HintTextField,"1").pause(2000).sendKeys(HintTextField,Keys.ARROW_DOWN).pause(2000).
+                sendKeys(HintTextField,Keys.ENTER).sendKeys(HintTextField,Keys.TAB).
+                sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).
+                sendKeys(Keys.TAB).sendKeys("11223344").
+                sendKeys(Keys.TAB).sendKeys("1234567890-q").sendKeys(Keys.TAB).sendKeys("1234567890-q").
+                sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.ENTER).perform();
+    }
+    @Test(priority = 7)
+    void VerifyAbleToDeletAllUser() throws InterruptedException {
+        driver.findElement(By.xpath("//span[text()='Admin']")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("(//span[@class='oxd-checkbox-input oxd-checkbox-input--active --label-right oxd-checkbox-input'])[1]")).click();
+        WebElement DeleteCheckbox = driver.findElement(By.xpath("//button[text()=' Delete Selected ']"));
+        if(DeleteCheckbox.isDisplayed()){
+            DeleteCheckbox.click();
+        }
+        else {
+            System.err.println("Delete Selected Button Is Not Displayed....");
+        }
+
+        WebElement DeleteButton = driver.findElement(By.xpath("//button[text()=' Yes, Delete ']"));
+        if(DeleteButton.isDisplayed()){
+            DeleteButton.click();
+        }
+        else {
+            System.err.println("Delete Button Is Not Displayed....");
+        }
     }
    @AfterClass
     void PostConditions(){
