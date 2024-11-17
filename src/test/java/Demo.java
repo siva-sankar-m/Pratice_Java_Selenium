@@ -1,12 +1,7 @@
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-
-import java.io.File;
 import java.time.Duration;
 
 public class Demo
