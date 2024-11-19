@@ -104,6 +104,61 @@ public class OrangeHRM
             System.err.println("Delete Button Is Not Displayed....");
         }
     }
+    @Test(priority = 8)
+    void VerifyAdminTabAllDropDownAbleToSelectAllOption(){
+        //Admin Page->Job DropDown Options
+        driver.findElement(By.xpath("//span[text()='Admin']")).click();
+        driver.findElement(By.xpath("//span[text()='Job ']")).click();
+        driver.findElement(By.xpath("//a[text()='Job Titles']")).click();
+        driver.findElement(By.xpath("//span[text()='Job ']")).click();
+        driver.findElement(By.xpath("//a[text()='Pay Grades']")).click();
+        driver.findElement(By.xpath("//span[text()='Job ']")).click();
+        driver.findElement(By.xpath("//a[text()='Employment Status']")).click();
+        driver.findElement(By.xpath("//span[text()='Job ']")).click();
+        driver.findElement(By.xpath("//a[text()='Job Categories']")).click();
+        driver.findElement(By.xpath("//span[text()='Job ']")).click();
+        driver.findElement(By.xpath("//a[text()='Work Shifts']")).click();
+
+        //Admin Tab->Organization Options
+        driver.findElement(By.xpath("//span[text()='Organization ']")).click();
+        driver.findElement(By.xpath("//a[text()='General Information']")).click();
+        driver.findElement(By.xpath("//span[text()='Organization ']")).click();
+        driver.findElement(By.xpath("//a[text()='Locations']")).click();
+        driver.findElement(By.xpath("//span[text()='Organization ']")).click();
+        driver.findElement(By.xpath("//a[text()='Structure']")).click();
+
+        //Admin Tab->Qualifications Options
+        driver.findElement(By.xpath("//span[text()='Qualifications ']")).click();
+        driver.findElement(By.xpath("//a[text()='Skills']")).click();
+        driver.findElement(By.xpath("//span[text()='Qualifications ']")).click();
+        driver.findElement(By.xpath("//a[text()='Education']")).click();
+        driver.findElement(By.xpath("//span[text()='Qualifications ']")).click();
+        driver.findElement(By.xpath("//a[text()='Licenses']")).click();
+        driver.findElement(By.xpath("//span[text()='Qualifications ']")).click();
+        driver.findElement(By.xpath("//a[text()='Languages']")).click();
+        driver.findElement(By.xpath("//span[text()='Qualifications ']")).click();
+        driver.findElement(By.xpath("//a[text()='Memberships']")).click();
+
+
+        //Admin Tab->Configuration Options
+        driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+        driver.findElement(By.xpath("//a[text()='Email Configuration']")).click();
+        driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+        driver.findElement(By.xpath("//a[text()='Email Subscriptions']")).click();
+        driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+        driver.findElement(By.xpath("//a[text()='Localization']")).click();
+        driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+        driver.findElement(By.xpath("//a[text()='Language Packages']")).click();
+        driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+        driver.findElement(By.xpath("//a[text()='Modules']")).click();
+        driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+        driver.findElement(By.xpath("//a[text()='Social Media Authentication']")).click();
+        driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+        driver.findElement(By.xpath("//a[text()='Register OAuth Client']")).click();
+        driver.findElement(By.xpath("//span[text()='Configuration ']")).click();
+        driver.findElement(By.xpath("//a[text()='LDAP Configuration']")).click();
+
+    }
    @AfterClass
     void PostConditions(){
         driver.quit();
